@@ -4,11 +4,21 @@ from app import app
 
 @app.route('/')
 def index():
+  title = 'Homepage'
   index = 'index.html'
-  return render_template(index)
+  return render_template(index, title=title)
 
 
 
 @app.route('/articles')
 def articles():
-  return render_template('articles.html')
+  title = 'articles'
+  articles= 'articles.html'                                                                                                                                                                                              
+  return render_template(articles, title=title)
+
+
+@app.route('/about')
+def about():
+  title = 'About'
+  about= 'about.html'
+  return render_template(about, title=title)
