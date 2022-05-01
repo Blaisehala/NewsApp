@@ -10,9 +10,29 @@
   <title>NEWS</title>
   {% endif %}
 </head>
-{% block body%}
+
 <body>
+  <h3> Extends here</h3>
+  <button>
+    click here to subscribe
+  </button>
+
+  {% block header %} {% endblock %}
+  
+  <div style="background-color: brown;">
+   
+    {% block body %} {% endblock %}
+  </div>
+
+  <div>
+    {% block footer %}
+    {% endblock %}
+  </div>
   
 </body>
-{% endblock %}
+
 </html>
+
+
+
+<!-- the base html is the parent for all pages. Determining their arrangment on the pages -->
