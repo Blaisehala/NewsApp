@@ -2,11 +2,13 @@
 
 
 {% block body%}
-<h1> Hello there. This is the <span style="color: olive ;">Articles</span> page</h1>
+<h1>news articles page</h1>
+{% for article in articles %}
+<h6>{{article.description}}</h6>
+<img src="{{article.image}}" alt="" />
+<p>{{article.time}}</p>
+{% endfor %}
 {% endblock %}
 
 
 
-{% block footer %}
-<p>Copyrigt @ 2022</p>
-{% endblock %}
