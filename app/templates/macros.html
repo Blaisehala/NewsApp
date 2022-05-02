@@ -1,0 +1,17 @@
+{% macro displayNewsList(results_list) %}
+
+{% for article in results_list %}
+<div class="container p-3 w-100" style="overflow-x: hidden;">
+  <div class="col p-3">
+    <div class="card p-3">
+      <img src="{{article.urlToImage}}" alt="" />
+      <div class="card-body">
+        <h3 class="card-title">{{article.title}}</h3>
+        <p class="card-text lead">{{article.description}}</p>
+        <p class="card-text fs-4">{{article.content}}</p>
+        <p class="card-text text-center">{{article.publishedAt}}</p>
+        <a 
+{% endfor %}
+
+{% endmacro %}
+
