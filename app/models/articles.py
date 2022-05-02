@@ -1,8 +1,10 @@
 class Articles:
-  def __init__(self,image,description,time):
+  def __init__(self,urlToImage, description, publishedAt,title):
   
-    self.image = image
+  
+    self.urlToImage = urlToImage
     self.description = description
-    self.time = time
+    self.publishedAt = publishedAt
+    self.title = title
 
     
