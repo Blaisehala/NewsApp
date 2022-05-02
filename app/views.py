@@ -1,26 +1,16 @@
 from flask import render_template
 from app import app
-from .requests import news_articles
+from app.requests import news_articles
+
 
 
 @app.route('/')
 def index():
-  title = 'Homepage'
-  index = 'index.html'
-  return render_template(index, title=title)
+  sports_news= news_articles('sports')
+  health_news= news_articles('health')
+  entertainment_news= news_articles('entertainment')
+  business_news= news_articles('business')
+  
+  return render_template('index.html',sports=sports_news, health=health_news, entertainment=entertainment_news,business=business_news)
 
 
-
-@app.route('/articles/')
-def articles(id):
-  title = 'articles'
-  articles= 'articles.html'
-  n_articles = news_articles(id)                                                                                                                                                                                          
-  return render_template(articles, title=title, articles = n_articles)
-
-
-@app.route('/about')
-def about():
-  title = 'About'
-  about= 'about.html'
-  return render_template(about, title=title)
