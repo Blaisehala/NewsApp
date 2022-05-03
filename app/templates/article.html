@@ -1,18 +1,17 @@
-
-
-{% block content %}
-
-<h1>news articles page</h1>
-
 {% for article in articles %}
 
-<h6>{{article.description}}</h6>
 
-<img src="{{article.url}}" alt=""/>
-<p>{{article.time}}</p>
+
+<p>{{article.title}}
+{{article.description}}</p>
+<p>Date Published:{{article.publishedAt}}</p>
+<a href="{{article.url}}"><button class="btn btn-info">Read More</button></a>
+
+<img src="{{article.image}}" alt="" height="200px">
+
+
+
+
 
 
 {% endfor %}
-{% endblock %}
-
-

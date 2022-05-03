@@ -1,22 +1,27 @@
-
+{% import 'macros.html' as macro%}
+{% extends 'base.html'%}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    {% for source in sources %}
-    <div class="col-md-4">
-      <h1> <strong>{{source.name}}</strong>
-      </h1>
+<div class="watch">
+  <div class="container">
+    <div class="row">
+      {% for source in sources %}
+      <div class="col-md-4">
+        <h1> <strong>{{source.name}}</strong>
+        </h1>
 
 
-      {{source.description}}<br>
-      {{source.id}}
-      <a href="{{source.url}}">Read More</a>
+        {{source.description}}<br>
+        {{source.id}}
+
+        <a href="{{source.url}}">Read More</a>
+
+      </div>
+
+      <a href="/article/{{source.id}}"><button class="btn btn-info">Go to Article</button></a>
+      {% endfor %}
+
     </div>
-<button class="btn btn-primary">read</button>
-<a href="/article/{{source.id}}">Click herre</a>
-    {% endfor %}
-
   </div>
 </div>
 {% endblock %}

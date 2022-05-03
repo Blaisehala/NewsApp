@@ -1,3 +1,4 @@
+from email.mime import image
 import urllib.request
 import json
 from .models import Articles,Source
@@ -9,15 +10,15 @@ api_key = None
 
 def configure_request(app):
   global api_key,BASE_ARTICLES_URL,SOURCE_URL
-  BASE_ARTICLES_URL = app.config['ARTICLES_URL']
+  
   api_key = app.config['NEWS_API_KEY']
   SOURCE_URL= app.config['SOURCE_URL']
-
+  BASE_ARTICLES_URL= app.config['BASE_ARTICLES_URL']
 
 def get_sources():
-  source_url = 'https://newsapi.org/v2/top-headlines/sources?apiKey=a47ff0739316461ca947d81c376a58c3'
+  get_source_url = 'https://newsapi.org/v2/top-headlines/sources?apiKey=a47ff0739316461ca947d81c376a58c3'
 #opening the data, reading it and passing it as a dict
-  with urllib.request.urlopen(source_url) as news_source:
+  with urllib.request.urlopen(get_source_url) as news_source:
     # Reading the source data
     source_data = news_source.read()
     source_data_dict = json.loads(source_data)
@@ -53,43 +54,38 @@ def process_sources (sources):
 
 # class Articles 
 
-def news_articles(id):
-  news_url = BASE_ARTICLES_URL.format(id)
-#opening the data, reading it and passing it as a dict
-  with urllib.request.urlopen(news_url) as url:
-# Reading the project news
-   projectnews_data = url.read()
+def get_articles(id):
+  get_articles_url = BASE_ARTICLES_URL.format(id)
+  with urllib.request.urlopen(get_articles_url) as articles_content:
+    articles_data = articles_content.read()
+    articles_dict =json.loads(articles_data)
+    
 
-   projectnews_data_dict = json.loads(projectnews_data)
-# Json.loads converts into a dictionary 
+    articles_results = None
 
-   articles_results = None
-   if projectnews_data_dict['articles']:
-      articles_list = projectnews_data_dict['articles']
-      articles_results = process_results(articles_list)
-  return articles_results
+    if articles_dict['articles']:
+      articles_list = articles_dict['articles']
+      articles_results = process_articles(articles_list)
 
+    return articles_results
 
-def process_results(results_list):
-  articles_results = []
-  for result in results_list:
-    urlToImage = result.get('urlToImage')
-    description = result.get('description')
-    publishedAt = result.get('publishedAt')
-    title = result.get('title')
-    url = result.get('url')
+def process_articles(list):
+  articles_results = [] 
 
-    if urlToImage:
-      articles_object = Articles(urlToImage, description, publishedAt,title,url)
+  for article in list:
+    image = article['urlToImage']
+    description = article['description']
+    publishedAt = article['publishedAt']
+    title = article['title']
+    url = article['url']
+
+    if image:
+      articles_object = Articles(image,description,publishedAt,title,url)
       articles_results.append(articles_object)
 
   return articles_results
 
-
-
-
-
-
+    
 
 
 

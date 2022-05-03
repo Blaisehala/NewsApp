@@ -1,7 +1,7 @@
 
 from flask import render_template
 from  .import main
-from ..requests import get_sources, news_articles
+from ..requests import get_sources, get_articles
 
 
 
@@ -13,17 +13,13 @@ def index():
   return render_template('index.html',sources=sources)
 
 
-
-
-
 @main.route('/article/<id>')
-def articles(id):
+def article(id):
 
-  
-  '''
-  View articles page
-  '''
+  articles = get_articles(id)
 
-  articles = news_articles(id)
-  
-  return render_template('article.html',articles=news_articles)
+  return render_template('article.html',articles=articles)
+
+
+
+
