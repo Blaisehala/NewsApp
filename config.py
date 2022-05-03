@@ -20,7 +20,7 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
   '''The development config child class'''
-  DEBUG = True
+DEBUG = False
 
 
 config_options ={
