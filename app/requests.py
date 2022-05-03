@@ -15,7 +15,7 @@ def configure_request(app):
 
 
 def get_sources():
-  source_url = 'https://newsapi.org/v2/top-headlines/sources?apiKey=5cec8bf6c5664591a5d11a20c15e1ae4'
+  source_url = 'https://newsapi.org/v2/top-headlines/sources?apiKey=a47ff0739316461ca947d81c376a58c3'
 #opening the data, reading it and passing it as a dict
   with urllib.request.urlopen(source_url) as news_source:
     # Reading the source data
@@ -54,7 +54,7 @@ def process_sources (sources):
 # class Articles 
 
 def news_articles(id):
-  news_url = BASE_ARTICLES_URL.format(id,api_key)
+  news_url = BASE_ARTICLES_URL.format(id)
 #opening the data, reading it and passing it as a dict
   with urllib.request.urlopen(news_url) as url:
 # Reading the project news

@@ -1,6 +1,6 @@
-{% macro displayNewsList(results_list) %}
+{% macro displayNewsList(articles_results) %}
 
-{% for article in results_list %}
+{% for article in articles_results %}
 <div class="container p-3 w-100" style="overflow-x: hidden;">
   <div class="col p-3">
     <div class="card p-3">
@@ -10,8 +10,9 @@
         <p class="card-text lead">{{article.description}}</p>
         <p class="card-text fs-4">{{article.content}}</p>
         <p class="card-text text-center">{{article.publishedAt}}</p>
-        <a 
-{% endfor %}
-
-{% endmacro %}
-
+        <a href="{{article.url}}"> <button  class="btn btn-info">ReadMore</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+ {% endfor %} {% endmacro %}
