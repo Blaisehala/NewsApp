@@ -1,6 +1,6 @@
 import unittest
-import unittest
-from app import models
+
+
 Source = models.Source
 class SourceTest(unittest.TestCase):
     def setUp(self):
