@@ -1,4 +1,3 @@
-from email.mime import image
 import urllib.request
 import json
 from .models import Articles,Source
@@ -73,15 +72,15 @@ def process_articles(list):
   articles_results = [] 
 
   for article in list:
-    image = article['urlToImage']
+    urlToImage = article['urlToImage']
     description = article['description']
     publishedAt = article['publishedAt']
     title = article['title']
     url = article['url']
 
-    if image:
-      articles_object = Articles(image,description,publishedAt,title,url)
-      articles_results.append(articles_object)
+    # if image:
+    articles_object = Articles(urlToImage,description,publishedAt,title,url)
+    articles_results.append(articles_object)
 
   return articles_results
 
