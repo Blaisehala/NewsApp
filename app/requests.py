@@ -30,7 +30,7 @@ def get_sources():
       sources_list = source_data_dict['sources']
       source_results = process_sources(sources_list)
 
-    return source_results
+  return source_results
 
 def process_sources (sources):
   sources_list = []
@@ -66,7 +66,7 @@ def get_articles(id):
       articles_list = articles_dict['articles']
       articles_results = process_articles(articles_list)
 
-    return articles_results
+  return articles_results
 
 def process_articles(list):
   articles_results = [] 

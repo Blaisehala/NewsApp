@@ -8,6 +8,7 @@ class Articles:
     self.title = title
     self.url = url
 
+
 class Source:
   def __init__(self,id,name, description,url):
     self.id= id

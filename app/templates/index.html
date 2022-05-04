@@ -1,12 +1,22 @@
 {% import 'macros.html' as macro%}
 {% extends 'base.html'%}
 
+
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+
+
 {% block content %}
-<div class="watch">
+<div class="watch" style="background-color:blue;">
+  {% for source in sources %}
   <div class="container">
-    <div class="row">
-      {% for source in sources %}
-      <div class="col-md-4">
+   
+     
+      <div class="col col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <h1> <strong>{{source.name}}</strong>
         </h1>
 
@@ -19,9 +29,10 @@
       </div>
 
       <a href="/article/{{source.id}}"><button class="btn btn-info">Go to Article</button></a>
-      {% endfor %}
+      
 
-    </div>
+    
   </div>
+  {% endfor %}
 </div>
 {% endblock %}

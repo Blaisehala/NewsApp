@@ -1,17 +1,16 @@
-{% for article in articles %}
 
+<div style="background-color:blue ">
+  {% for article in articles %}
 
-
-<p>{{article.title}}</p><br>
-<p>{{article.description}}</p>
-<p>Date Published:{{article.publishedAt}}</p>
-<a href="{{article.url}}"><button class="btn btn-info">Read More</button></a>
-
-<img src="{{article.urlToImage}}" alt="" height="200px">
-
-
-
-
-
+  
+  <p>{{article.title}}</p><br>
+  <p>{{article.description}}</p>
+  <p>Date Published:{{article.publishedAt}}</p>
+  <a href="{{article.url}}"><button class="btn btn-info">Read More</button></a>
+  
+  <img src="{{article.urlToImage}}" alt="" height="200px">
+  
 
 {% endfor %}
+
+</div>
