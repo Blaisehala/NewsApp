@@ -1,16 +1,14 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
 
-<div style="background-color:blue ">
-  {% for article in articles %}
 
-  
-  <p>{{article.title}}</p><br>
-  <p>{{article.description}}</p>
-  <p>Date Published:{{article.publishedAt}}</p>
-  <a href="{{article.url}}"><button class="btn btn-info">Read More</button></a>
-  
-  <img src="{{article.urlToImage}}" alt="" height="200px">
-  
+{% block content %}
 
-{% endfor %}
+
+<div>
+
+  {{ macro.displayNewsList(articles) }}
 
 </div>
+
+{% endblock %}

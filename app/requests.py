@@ -78,9 +78,9 @@ def process_articles(list):
     title = article['title']
     url = article['url']
 
-    # if image:
-    articles_object = Articles(urlToImage,description,publishedAt,title,url)
-    articles_results.append(articles_object)
+    if urlToImage:
+      articles_object = Articles(urlToImage,description,publishedAt,title,url)
+      articles_results.append(articles_object)
 
   return articles_results
 
